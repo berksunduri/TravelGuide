@@ -27,6 +27,7 @@ class LoginPage : AppCompatActivity() {
         signupButton = findViewById(R.id.signupButton)
 
         signupButton.setOnClickListener { openSignupPage() }
+        loginButton.setOnClickListener { openHomePage()}
 
 
 
@@ -34,6 +35,12 @@ class LoginPage : AppCompatActivity() {
     fun openSignupPage()
     {
         val intent= Intent(this, SignUpPage::class.java)
+        startActivity(intent)
+    }
+
+    fun openHomePage()
+    {
+        val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
     }
 }
