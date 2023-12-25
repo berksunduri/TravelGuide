@@ -1,5 +1,6 @@
 package com.example.travelguide
 
+import ImageSliderAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -7,6 +8,7 @@ import android.widget.ImageButton
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -20,6 +22,8 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
     private lateinit var menuButton: ImageButton
+    private lateinit var imageSlider: ViewPager2
+    private lateinit var imageList: List<Int> // List of image resources (drawable IDs)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +35,9 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
         drawerLayout = findViewById(R.id.drawer_layout)
         navView = findViewById(R.id.nav_view)
         menuButton = findViewById(R.id.menu_button)
+        imageSlider = findViewById(R.id.image_slider)
+
+
 
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, R.string.open, R.string.close
@@ -58,6 +65,13 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
                 drawerLayout.openDrawer(GravityCompat.START)
             }
         }
+
+        // Prepare a list of image resources (drawable IDs)
+        imageList = listOf(R.drawable.imageslide1, R.drawable.imageslide2, R.drawable.imageslide3, R.drawable.imageslide4)
+
+        // Set up the ViewPager2 adapter
+        val adapter = ImageSliderAdapter(imageList)
+        imageSlider.adapter = adapter
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
