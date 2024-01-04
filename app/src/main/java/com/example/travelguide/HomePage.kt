@@ -1,6 +1,7 @@
 package com.example.travelguide
 
 import ImageSliderAdapter
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -49,9 +50,11 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
             when (menuItem.itemId) {
                 R.id.nav_home -> {
                     // Handle Home Page click
+                    openHomePage()
                 }
                 R.id.nav_venues -> {
-                    // Handle Venues click
+                    // Handle Venues Page Click
+                    openVenuesPage()
                 }
                 // Handle other menu items similarly
             }
@@ -67,11 +70,11 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
         }
 
         // Prepare a list of image resources (drawable IDs)
-        imageList = listOf(R.drawable.imageslide1, R.drawable.imageslide2, R.drawable.imageslide3, R.drawable.imageslide4)
+       // imageList = listOf(R.drawable.imageslide1, R.drawable.imageslide2, R.drawable.imageslide3, R.drawable.imageslide4)
 
         // Set up the ViewPager2 adapter
-        val adapter = ImageSliderAdapter(imageList)
-        imageSlider.adapter = adapter
+        //val adapter = ImageSliderAdapter(imageList)
+        //imageSlider.adapter = adapter
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -85,6 +88,8 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, zoomLevel))
     }
 
+
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -95,5 +100,18 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
             return true
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun openVenuesPage()
+    {
+        val intent = Intent(this, VenuesPage::class.java)
+        startActivity(intent)
+        finish()
+    }
+    private fun openHomePage()
+    {
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
+        finish()
     }
 }

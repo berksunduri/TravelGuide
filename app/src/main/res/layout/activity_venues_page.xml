@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+
+
+    <!-- NavigationView for the drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu" />
+    <!-- Menu Button -->
+    <ImageButton
+        android:id="@+id/venuesmenu_button"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="#FFFFFF"
+        android:scaleType="centerInside"
+        android:src="@drawable/menuicon" />
+    <!-- Venue Categories -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Accommodations -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Accommodations"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- RecyclerView for Accommodations -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_accommodations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Add similar sections for other categories -->
+        <!-- Historical Sites, Restaurants/Cafes, Shopping Spots, Cultural Events, Outdoor Activities -->
+
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

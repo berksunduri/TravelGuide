@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "408833937803",
+    "firebase_url": "https://cansel-28eae-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "cansel-28eae",
+    "storage_bucket": "cansel-28eae.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408833937803:android:d04ae2c86b08a64c211f8e",
+        "android_client_info": {
+          "package_name": "com.example.travelguide"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408833937803-6i2hpanrpcs0gl8md2te1tvf56lvc767.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-5HENDJP6LlIr-5zht0cQp6VPP4lP3EA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408833937803-6i2hpanrpcs0gl8md2te1tvf56lvc767.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
