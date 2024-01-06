@@ -34,6 +34,7 @@ class LoginPage : AppCompatActivity() {
         signupButton = findViewById(R.id.signupButton)
 
         signupButton.setOnClickListener { openSignupPage() }
+        forgot.setOnClickListener { openForgotPasswordPage() }
 
         loginButton.setOnClickListener {
             //if true (all fields correct)
@@ -72,6 +73,12 @@ class LoginPage : AppCompatActivity() {
     fun openSignupPage()
     {
         val intent= Intent(this, SignUpPage::class.java)
+        startActivity(intent)
+        finish()
+    }
+    fun openForgotPasswordPage()
+    {
+        val intent= Intent(this, ForgotPasswordPage::class.java)
         startActivity(intent)
         finish()
     }

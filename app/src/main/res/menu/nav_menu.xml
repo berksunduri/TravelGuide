@@ -6,37 +6,37 @@
     <!-- Home Page -->
     <item
         android:id="@+id/nav_home"
-        android:title="Home Page"
-         />
+        android:icon="@drawable/home"
+        android:title="Home Page" />
 
     <!-- Venues -->
     <item
         android:id="@+id/nav_venues"
-        android:title="Venues"
-         />
+        android:icon="@drawable/venues"
+        android:title="Venues" />
 
     <!-- All Posts -->
     <item
         android:id="@+id/nav_all_posts"
-        android:title="All Posts"
-         />
+        android:icon="@drawable/post"
+        android:title="All Posts" />
 
     <!-- Profile -->
     <item
         android:id="@+id/nav_profile"
-        android:title="Profile"
-         />
+        android:icon="@drawable/user1"
+        android:title="Profile" />
 
     <!-- Help -->
     <item
         android:id="@+id/nav_help"
-        android:title="Help"
-         />
+        android:icon="@drawable/help"
+        android:title="Help" />
 
     <!-- Contact -->
     <item
         android:id="@+id/nav_contact"
-        android:title="Contact"
-        />
+        android:icon="@drawable/contact"
+        android:title="Contact" />
 
 </menu>
