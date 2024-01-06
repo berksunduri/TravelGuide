@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthUserCollisionException
 
 class SignUpPage : AppCompatActivity() {
 
@@ -31,18 +32,21 @@ class SignUpPage : AppCompatActivity() {
 
         signupButton.setOnClickListener{
             if(checkAllField()) {
-                auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString()).addOnCompleteListener {
-                    //if account created successfully
-                    //is automatically signed in
-                    if(it.isSuccessful) {
-                        auth.signOut()
-                        Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
-                        backToLoginPage()
+                auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            auth.signOut()
+                            Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
+                            backToLoginPage()
+                        } else {
+                            if (task.exception is FirebaseAuthUserCollisionException) {
+                                Toast.makeText(this, "Email already exists", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Log.e("error:", task.exception.toString())
+                                // Handle other exceptions if needed
+                            }
+                        }
                     }
-                    else {
-                       Log.e("error:", it.exception.toString())
-                    }
-                }
             }
         }
     }
