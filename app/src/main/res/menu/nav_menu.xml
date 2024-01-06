@@ -1,42 +1,49 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:showIn="navigation_view">
 
     <!-- Home Page -->
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/home"
-        android:title="Home Page" />
+        android:title="Home Page"
+        app:itemTextAppearance="@style/MenuTextStyle"/>
 
     <!-- Venues -->
     <item
-        android:id="@+id/nav_venues"
+        android:id="@+id/nav_categories"
         android:icon="@drawable/venues"
-        android:title="Venues" />
+        android:title="Categories"
+        app:itemTextAppearance="@style/MenuTextStyle"/>
 
     <!-- All Posts -->
     <item
         android:id="@+id/nav_all_posts"
         android:icon="@drawable/post"
-        android:title="All Posts" />
+        android:title="All Posts"
+        app:itemTextAppearance="@style/MenuTextStyle"/>
 
     <!-- Profile -->
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/user1"
-        android:title="Profile" />
+        android:title="Profile"
+        app:itemTextAppearance="@style/MenuTextStyle"/>
 
     <!-- Help -->
     <item
         android:id="@+id/nav_help"
         android:icon="@drawable/help"
-        android:title="Help" />
+        android:title="Help"
+        app:itemTextAppearance="@style/MenuTextStyle"/>
 
     <!-- Contact -->
     <item
         android:id="@+id/nav_contact"
         android:icon="@drawable/contact"
-        android:title="Contact" />
+        android:title="Contact"
+        app:itemTextAppearance="@style/MenuTextStyle"/>
 
 </menu>

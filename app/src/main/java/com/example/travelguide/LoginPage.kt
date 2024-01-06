@@ -52,11 +52,7 @@ class LoginPage : AppCompatActivity() {
                     }
                 }
             }
-
         }
-
-
-
     }
 
     private fun checkAllfield(): Boolean {

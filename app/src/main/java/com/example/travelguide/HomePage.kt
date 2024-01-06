@@ -1,6 +1,5 @@
 package com.example.travelguide
 
-import ImageSliderAdapter
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -52,9 +51,9 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
                     // Handle Home Page click
                     openHomePage()
                 }
-                R.id.nav_venues -> {
+                R.id.nav_categories -> {
                     // Handle Venues Page Click
-                    openVenuesPage()
+                    openCategoriesPage()
                 }
                 // Handle other menu items similarly
             }
@@ -102,9 +101,9 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun openVenuesPage()
+    private fun openCategoriesPage()
     {
-        val intent = Intent(this, VenuesPage::class.java)
+        val intent = Intent(this, CategoriesPage::class.java)
         startActivity(intent)
         finish()
     }

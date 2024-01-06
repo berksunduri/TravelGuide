@@ -1,0 +1,305 @@
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- Your other layout elements here -->
+
+
+    <!-- Place the NavigationView inside the DrawerLayout -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- ImageButton placed at the top-left corner -->
+        <ImageButton
+            android:id="@+id/venuesmenu_button"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#FFFFFF"
+            android:scaleType="centerInside"
+            android:src="@drawable/menuicon" />
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="100dp"
+            android:src="@drawable/logo" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilePic"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="327dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/user" />
+
+        <!-- Other views can be added here if needed -->
+    </RelativeLayout>
+
+    <!-- RelativeLayout to position the ImageButton -->
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categories"
+                android:layout_marginStart="85dp"
+                android:fontFamily="@font/jost"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:padding="10dp"
+                android:textAllCaps="true"/>
+
+            <RelativeLayout
+                android:id="@+id/historicalsitesbutton"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/category_card_round"
+                android:backgroundTint="#859D81"
+                android:backgroundTintMode="add">
+
+                <TextView
+                    android:layout_width="201dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
+                    android:fontFamily="@font/jost"
+                    android:shadowColor="#000000"
+                    android:shadowRadius="20"
+                    android:text="Historical Sites"
+                    android:textAllCaps="true"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/historicalsites" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/accommodationsbutton"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@drawable/category_card_round"
+                android:backgroundTint="#FDD05A"
+                android:backgroundTintMode="src_in"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="201dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/jost"
+                    android:shadowColor="#000000"
+                    android:shadowRadius="20"
+                    android:text="Lodging"
+                    android:textAllCaps="true"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/accomodations" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/gastronomybutton"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/category_card_round"
+                android:backgroundTint="#C6B293"
+                android:backgroundTintMode="src_in">
+
+                <TextView
+                    android:layout_width="243dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/jost"
+                    android:shadowColor="#000000"
+                    android:shadowRadius="20"
+                    android:text="Gastronomy"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/gastronomy" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/shoppingbutton"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/category_card_round"
+                android:backgroundTint="#71BFC8"
+                android:backgroundTintMode="src_in">
+
+                <TextView
+                    android:layout_width="201dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
+                    android:fontFamily="@font/jost"
+                    android:shadowColor="#000000"
+                    android:shadowRadius="20"
+                    android:text="Shopping Spots"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/shoppingspots" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/eventsbutton"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/category_card_round"
+                android:backgroundTint="#CCADB5"
+                android:backgroundTintMode="screen">
+
+                <TextView
+                    android:layout_width="201dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="28dp"
+                    android:fontFamily="@font/jost"
+                    android:shadowColor="#000000"
+                    android:shadowRadius="20"
+                    android:text="Cultural Events"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/events" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/outdoorbutton"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/category_card_round"
+                android:backgroundTint="#CDD1C4"
+                android:backgroundTintMode="src_in">
+
+                <TextView
+                    android:layout_width="201dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="38dp"
+                    android:fontFamily="@font/jost"
+                    android:shadowColor="#000000"
+                    android:shadowRadius="20"
+                    android:text="Outdoor Activities"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/outdoor" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/transportationbutton"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/category_card_round"
+                android:backgroundTint="#454545"
+                android:backgroundTintMode="screen"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="243dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:fontFamily="@font/jost"
+                    android:shadowColor="#000000"
+                    android:shadowRadius="20"
+                    android:text="Transportation"
+                    android:textAlignment="center"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textSize="26sp" />
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@drawable/transportation" />
+            </RelativeLayout>
+
+
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

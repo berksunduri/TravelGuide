@@ -18,7 +18,7 @@
             android:name=".ForgotPasswordPage"
             android:exported="false" />
         <activity
-            android:name=".VenuesPage"
+            android:name=".CategoriesPage"
             android:exported="false" />
 
         <meta-data

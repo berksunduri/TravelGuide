@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MenuTextStyle">
+        <item name="android:fontFamily">@font/jost</item>
+        <!-- Other text appearance attributes -->
+    </style>
+</resources>

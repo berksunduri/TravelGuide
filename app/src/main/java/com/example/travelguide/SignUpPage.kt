@@ -7,6 +7,7 @@ import android.util.Log
 import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
@@ -18,6 +19,7 @@ class SignUpPage : AppCompatActivity() {
     private lateinit var name: EditText
     private lateinit var email: EditText
     private lateinit var password: EditText
+    private lateinit var alreadylogin: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_page)
@@ -27,6 +29,7 @@ class SignUpPage : AppCompatActivity() {
         name = findViewById(R.id.etName)
         email = findViewById(R.id.etEmail)
         password = findViewById(R.id.etPassword)
+        alreadylogin = findViewById(R.id.textView4)
 
         signupButton = findViewById(R.id.signButton)
 
@@ -49,6 +52,7 @@ class SignUpPage : AppCompatActivity() {
                     }
             }
         }
+        alreadylogin.setOnClickListener { backToLoginPage() }
     }
 
     private fun checkAllField(): Boolean {

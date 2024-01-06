@@ -9,14 +9,14 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
-class VenuesPage : AppCompatActivity() {
+class CategoriesPage : AppCompatActivity() {
 
     private lateinit var menuButton: ImageButton
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_venues_page)
+        setContentView(R.layout.activity_categories_page)
 
         drawerLayout = findViewById(R.id.drawer_layout)
         menuButton = findViewById(R.id.venuesmenu_button)
@@ -32,8 +32,9 @@ class VenuesPage : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.nav_home -> {
                     // Handle Home Page click
+                    openHomePage()
                 }
-                R.id.nav_venues -> {
+                R.id.nav_categories -> {
                     // Handle Venues Page Click
                     openVenuesPage()
                 }
@@ -49,18 +50,57 @@ class VenuesPage : AppCompatActivity() {
                 drawerLayout.openDrawer(GravityCompat.START)
             }
         }
-
-        menuButton.setOnClickListener {
-            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                drawerLayout.closeDrawer(GravityCompat.START)
-            } else {
-                drawerLayout.openDrawer(GravityCompat.START)
-            }
-        }
     }
-    fun openVenuesPage()
+    private fun openVenuesPage()
     {
-        val intent = Intent(this, VenuesPage::class.java)
+        val intent = Intent(this, CategoriesPage::class.java)
+        startActivity(intent)
+    }
+    private fun openHomePage()
+    {
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
+    }
+    fun openHistoricalSitesPage()
+    {
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
+    }
+    fun openAccomodationsPage()
+    {
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
+    }
+    fun openGastronomyPage()
+    {
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
+    }
+    fun openShoppingSpotsPage()
+    {
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
+    }
+    fun openCulturalEventsPage()
+    {
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
+    }
+    fun openOutdoorActivitesPage()
+    {
+        val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
+    }
+    fun openTransportationPage()
+    {
+        val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
     }
 }
+//Accommodations
+//Historical Sites
+//Gastronomy
+//Shopping Spots
+//Cultural Events
+//Outdoor Activities
+//Transportation
