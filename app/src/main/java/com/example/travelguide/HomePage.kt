@@ -55,6 +55,10 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
                     // Handle Venues Page Click
                     openCategoriesPage()
                 }
+                R.id.nav_profile -> {
+                    // Handle Venues Page Click
+                    openProfilePage()
+                }
                 // Handle other menu items similarly
             }
             true
@@ -107,6 +111,13 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
         startActivity(intent)
         finish()
     }
+    private fun openProfilePage()
+    {
+        val intent = Intent(this, ProfilePage::class.java)
+        startActivity(intent)
+        finish()
+    }
+
     private fun openHomePage()
     {
         val intent = Intent(this, HomePage::class.java)

@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.database.FirebaseDatabase
 
 class SignUpPage : AppCompatActivity() {
 
@@ -20,11 +21,13 @@ class SignUpPage : AppCompatActivity() {
     private lateinit var email: EditText
     private lateinit var password: EditText
     private lateinit var alreadylogin: TextView
+    private lateinit var firebaseDatabase: FirebaseDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up_page)
 
         auth = FirebaseAuth.getInstance()
+        firebaseDatabase = FirebaseDatabase.getInstance()
 
         name = findViewById(R.id.etName)
         email = findViewById(R.id.etEmail)
@@ -33,14 +36,35 @@ class SignUpPage : AppCompatActivity() {
 
         signupButton = findViewById(R.id.signButton)
 
-        signupButton.setOnClickListener{
-            if(checkAllField()) {
+        signupButton.setOnClickListener {
+            if (checkAllField()) {
                 auth.createUserWithEmailAndPassword(email.text.toString(), password.text.toString())
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            auth.signOut()
-                            Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
-                            backToLoginPage()
+                            val currentUserID = auth.currentUser?.uid
+                            if (currentUserID != null) {
+                                val usersRef = firebaseDatabase.reference.child("Users").child(currentUserID)
+                                val userMap = HashMap<String, Any>()
+                                userMap["Name"] = name.text.toString()
+                                userMap["Email"] = email.text.toString()
+
+                                // Generate a unique key for the user in the Realtime Database
+                                val userKey = usersRef.push().key
+                                if (userKey != null) {
+                                    usersRef.child(userKey).updateChildren(userMap)
+                                        .addOnCompleteListener { databaseTask ->
+                                            if (databaseTask.isSuccessful) {
+                                                auth.signOut()
+                                                Toast.makeText(this, "Account created successfully!", Toast.LENGTH_SHORT).show()
+                                                backToLoginPage()
+                                            } else {
+                                                Log.e("FirebaseDatabase", "Failed to store user data: ${databaseTask.exception}")
+                                            }
+                                        }
+                                } else {
+                                    Log.e("FirebaseDatabase", "Failed to generate user key")
+                                }
+                            }
                         } else {
                             if (task.exception is FirebaseAuthUserCollisionException) {
                                 Toast.makeText(this, "Email already exists", Toast.LENGTH_SHORT).show()
