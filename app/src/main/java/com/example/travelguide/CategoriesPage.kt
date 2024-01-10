@@ -3,7 +3,9 @@ package com.example.travelguide
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
+import android.widget.RelativeLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -14,6 +16,13 @@ class CategoriesPage : AppCompatActivity() {
     private lateinit var menuButton: ImageButton
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navView: NavigationView
+    private lateinit var historicalButton: RelativeLayout
+    private lateinit var lodgingButton: RelativeLayout
+    private lateinit var gastronomyButton: RelativeLayout
+    private lateinit var shoppingButton: RelativeLayout
+    private lateinit var culturalButton: RelativeLayout
+    private lateinit var outdoorButton: RelativeLayout
+    private lateinit var transportationButton: RelativeLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories_page)
@@ -21,6 +30,15 @@ class CategoriesPage : AppCompatActivity() {
         drawerLayout = findViewById(R.id.drawer_layout)
         menuButton = findViewById(R.id.venuesmenu_button)
         navView = findViewById(R.id.nav_view)
+
+        historicalButton = findViewById(R.id.historicalsitesbutton)
+        lodgingButton = findViewById(R.id.lodgingbutton)
+        gastronomyButton = findViewById(R.id.gastronomybutton)
+        shoppingButton = findViewById(R.id.shoppingbutton)
+        culturalButton = findViewById(R.id.eventsbutton)
+        outdoorButton = findViewById(R.id.outdoorbutton)
+        transportationButton = findViewById(R.id.transportationbutton)
+
 
         val toggle = ActionBarDrawerToggle(
             this, drawerLayout, R.string.open, R.string.close
@@ -50,6 +68,29 @@ class CategoriesPage : AppCompatActivity() {
                 drawerLayout.openDrawer(GravityCompat.START)
             }
         }
+
+        historicalButton.setOnClickListener {
+            openHistoricalSitesPage()
+        }
+        lodgingButton.setOnClickListener {
+            openLodgingPage()
+        }
+        gastronomyButton.setOnClickListener {
+            openGastronomyPage()
+        }
+        shoppingButton.setOnClickListener {
+            openShoppingSpotsPage()
+        }
+        culturalButton.setOnClickListener {
+            openCulturalEventsPage()
+        }
+        outdoorButton.setOnClickListener {
+            openOutdoorActivitesPage()
+        }
+        transportationButton.setOnClickListener {
+            openTransportationPage()
+        }
+
     }
     private fun openVenuesPage()
     {
@@ -61,37 +102,37 @@ class CategoriesPage : AppCompatActivity() {
         val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
     }
-    fun openHistoricalSitesPage()
+    private fun openHistoricalSitesPage()
+    {
+        val intent = Intent(this, HistoricalSitesPage::class.java)
+        startActivity(intent)
+    }
+    private fun openLodgingPage()
+    {
+        val intent = Intent(this, LodgingPage::class.java)
+        startActivity(intent)
+    }
+    private fun openGastronomyPage()
     {
         val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
     }
-    fun openAccomodationsPage()
+    private fun openShoppingSpotsPage()
     {
         val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
     }
-    fun openGastronomyPage()
+    private fun openCulturalEventsPage()
     {
         val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
     }
-    fun openShoppingSpotsPage()
+    private fun openOutdoorActivitesPage()
     {
         val intent = Intent(this, HomePage::class.java)
         startActivity(intent)
     }
-    fun openCulturalEventsPage()
-    {
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
-    }
-    fun openOutdoorActivitesPage()
-    {
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
-    }
-    fun openTransportationPage()
+    private fun openTransportationPage()
     {
         val intent = Intent(this, HomePage::class.java)
         startActivity(intent)

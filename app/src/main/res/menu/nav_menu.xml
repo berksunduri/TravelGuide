@@ -46,4 +46,12 @@
         android:title="Contact"
         app:itemTextAppearance="@style/MenuTextStyle"/>
 
+    <!-- Create a Post -->
+    <item
+        android:id="@+id/nav_createpost"
+        android:icon="@drawable/common_full_open_on_phone"
+        android:title="Create Post"
+        android:visible="false"
+        app:itemTextAppearance="@style/MenuTextStyle" />
+
 </menu>

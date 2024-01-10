@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -15,6 +16,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class HomePage : AppCompatActivity(), OnMapReadyCallback {
 
@@ -24,6 +26,7 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var menuButton: ImageButton
     private lateinit var imageSlider: ViewPager2
     private lateinit var imageList: List<Int> // List of image resources (drawable IDs)
+    private val ADMIN_USER_UUID = "bKwTZbnDMOW8nIhTICCJmoNNoBw2"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,9 +36,18 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
         drawerLayout = findViewById(R.id.drawer_layout)
-        navView = findViewById(R.id.nav_view)
+        navView = findViewById<NavigationView>(R.id.nav_view)
+        val menu = navView.menu
+        val createPostItem =  menu.findItem(R.id.nav_createpost)
         menuButton = findViewById(R.id.menu_button)
         imageSlider = findViewById(R.id.image_slider)
+
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null && currentUser.uid == ADMIN_USER_UUID) {
+            createPostItem.isVisible = true
+        } else {
+            createPostItem.isVisible = false
+        }
 
 
 
@@ -58,6 +70,14 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
                 R.id.nav_profile -> {
                     // Handle Venues Page Click
                     openProfilePage()
+                }
+                R.id.nav_createpost -> {
+                    if (createPostItem.isVisible) {
+                        openCreatePostPage()
+                    } else {
+                        // If the current user is not the admin, show a message or handle accordingly
+                        Toast.makeText(this, "You don't have permission to access this feature", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 // Handle other menu items similarly
             }
@@ -121,6 +141,12 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
     private fun openHomePage()
     {
         val intent = Intent(this, HomePage::class.java)
+        startActivity(intent)
+        finish()
+    }
+    private fun openCreatePostPage()
+    {
+        val intent = Intent(this, PostCreatePage::class.java)
         startActivity(intent)
         finish()
     }

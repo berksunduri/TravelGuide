@@ -107,7 +107,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/accommodationsbutton"
+                android:id="@+id/lodgingbutton"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:background="@drawable/category_card_round"
