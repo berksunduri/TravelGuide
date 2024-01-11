@@ -33,8 +33,8 @@ class LoginPage : AppCompatActivity() {
         forgot = findViewById(R.id.forgotPassword)
         signupButton = findViewById(R.id.signupButton)
 
-        signupButton.setOnClickListener { openSignupPage() }
-        forgot.setOnClickListener { openForgotPasswordPage() }
+        signupButton.setOnClickListener { IntentAdapter.openSignupPage(this) }
+        forgot.setOnClickListener { IntentAdapter.openForgotPasswordPage(this) }
 
         loginButton.setOnClickListener {
             //if true (all fields correct)
@@ -44,7 +44,7 @@ class LoginPage : AppCompatActivity() {
                         //if successful
                         Toast.makeText(this, "Successfully logged in", Toast.LENGTH_SHORT).show()
                         //go to home page
-                        openHomePage()
+                        IntentAdapter.openHomePage(this)
                     }
                     else{
                         //couldnt login
@@ -65,24 +65,5 @@ class LoginPage : AppCompatActivity() {
             return false
         }
         return true
-    }
-    fun openSignupPage()
-    {
-        val intent= Intent(this, SignUpPage::class.java)
-        startActivity(intent)
-        finish()
-    }
-    fun openForgotPasswordPage()
-    {
-        val intent= Intent(this, ForgotPasswordPage::class.java)
-        startActivity(intent)
-        finish()
-    }
-
-    fun openHomePage()
-    {
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
-        finish()
     }
 }

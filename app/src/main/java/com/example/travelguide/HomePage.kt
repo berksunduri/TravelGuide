@@ -61,19 +61,19 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
             when (menuItem.itemId) {
                 R.id.nav_home -> {
                     // Handle Home Page click
-                    openHomePage()
+                    IntentAdapter.openHomePage(this)
                 }
                 R.id.nav_categories -> {
                     // Handle Venues Page Click
-                    openCategoriesPage()
+                    IntentAdapter.openCategoriesPage(this)
                 }
                 R.id.nav_profile -> {
                     // Handle Venues Page Click
-                    openProfilePage()
+                    IntentAdapter.openProfilePage(this)
                 }
                 R.id.nav_createpost -> {
                     if (createPostItem.isVisible) {
-                        openCreatePostPage()
+                        IntentAdapter.openCreatePostPage(this)
                     } else {
                         // If the current user is not the admin, show a message or handle accordingly
                         Toast.makeText(this, "You don't have permission to access this feature", Toast.LENGTH_SHORT).show()
@@ -99,7 +99,6 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
         //val adapter = ImageSliderAdapter(imageList)
         //imageSlider.adapter = adapter
     }
-
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
@@ -110,9 +109,6 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
         // Move the camera to the default location
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLocation, zoomLevel))
     }
-
-
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -123,31 +119,5 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
             return true
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    private fun openCategoriesPage()
-    {
-        val intent = Intent(this, CategoriesPage::class.java)
-        startActivity(intent)
-        finish()
-    }
-    private fun openProfilePage()
-    {
-        val intent = Intent(this, ProfilePage::class.java)
-        startActivity(intent)
-        finish()
-    }
-
-    private fun openHomePage()
-    {
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
-        finish()
-    }
-    private fun openCreatePostPage()
-    {
-        val intent = Intent(this, PostCreatePage::class.java)
-        startActivity(intent)
-        finish()
     }
 }

@@ -1,3 +1,4 @@
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -5,6 +6,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.travelguide.FullPost
 import com.example.travelguide.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -47,16 +49,18 @@ class PostsAdapter(private val category: String) : RecyclerView.Adapter<PostsAda
             // Load image using Picasso library
             val imageUrl = postSnapshot.child("imageUrl").getValue(String::class.java)
 
-                Picasso.get()
-                    .load(imageUrl)
-                    .placeholder(R.drawable.placeholder_image)
-                    .into(imageViewPost)
+            Picasso.get()
+                .load(imageUrl)
+                .placeholder(R.drawable.placeholder_image)
+                .into(imageViewPost)
 
 
             buttonViewPost.setOnClickListener {
-                // Handle button click to view full post
-                // You can implement code here to navigate to the full post page
-                // Example: Start a new activity to display the full post
+                val intent = Intent(itemView.context, FullPost::class.java)
+                intent.putExtra("title", postSnapshot.child("title").getValue(String::class.java))
+                intent.putExtra("description", postSnapshot.child("description").getValue(String::class.java))
+                intent.putExtra("imageUrl", postSnapshot.child("imageUrl").getValue(String::class.java))
+                itemView.context.startActivity(intent)
             }
         }
     }

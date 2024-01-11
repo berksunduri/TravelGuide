@@ -33,8 +33,7 @@ class ForgotPasswordPage : AppCompatActivity() {
                     if(it.isSuccessful){
                         //email is sent
                         Toast.makeText(this, "Email sent!", Toast.LENGTH_SHORT).show()
-                        backToLoginPage()
-                        finish()
+                        IntentAdapter.backToLoginPage(this)
                     }
                 }
             }
@@ -42,7 +41,7 @@ class ForgotPasswordPage : AppCompatActivity() {
         }
 
         backtoLogin.setOnClickListener {
-            backToLoginPage()
+            IntentAdapter.backToLoginPage(this)
         }
     }
 
@@ -56,11 +55,5 @@ class ForgotPasswordPage : AppCompatActivity() {
             return false
         }
         return true
-    }
-    private fun backToLoginPage()
-    {
-        val intent = Intent(this, LoginPage::class.java)
-        startActivity(intent)
-        finish()
     }
 }

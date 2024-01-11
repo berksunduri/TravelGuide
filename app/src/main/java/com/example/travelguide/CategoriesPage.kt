@@ -6,10 +6,12 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class CategoriesPage : AppCompatActivity() {
 
@@ -23,6 +25,7 @@ class CategoriesPage : AppCompatActivity() {
     private lateinit var culturalButton: RelativeLayout
     private lateinit var outdoorButton: RelativeLayout
     private lateinit var transportationButton: RelativeLayout
+    private val ADMIN_USER_UUID = "bKwTZbnDMOW8nIhTICCJmoNNoBw2"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_categories_page)
@@ -30,6 +33,8 @@ class CategoriesPage : AppCompatActivity() {
         drawerLayout = findViewById(R.id.drawer_layout)
         menuButton = findViewById(R.id.venuesmenu_button)
         navView = findViewById(R.id.nav_view)
+        val menu = navView.menu
+        val createPostItem =  menu.findItem(R.id.nav_createpost)
 
         historicalButton = findViewById(R.id.historicalsitesbutton)
         lodgingButton = findViewById(R.id.lodgingbutton)
@@ -38,6 +43,15 @@ class CategoriesPage : AppCompatActivity() {
         culturalButton = findViewById(R.id.eventsbutton)
         outdoorButton = findViewById(R.id.outdoorbutton)
         transportationButton = findViewById(R.id.transportationbutton)
+
+
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null && currentUser.uid == ADMIN_USER_UUID) {
+            createPostItem.isVisible = true
+        } else {
+            createPostItem.isVisible = false
+        }
+
 
 
         val toggle = ActionBarDrawerToggle(
@@ -50,16 +64,29 @@ class CategoriesPage : AppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.nav_home -> {
                     // Handle Home Page click
-                    openHomePage()
+                    IntentAdapter.openHomePage(this)
                 }
                 R.id.nav_categories -> {
                     // Handle Venues Page Click
-                    openVenuesPage()
+                    IntentAdapter.openCategoriesPage(this)
+                }
+                R.id.nav_profile -> {
+                    // Handle Venues Page Click
+                    IntentAdapter.openProfilePage(this)
+                }
+                R.id.nav_createpost -> {
+                    if (createPostItem.isVisible) {
+                        IntentAdapter.openCreatePostPage(this)
+                    } else {
+                        // If the current user is not the admin, show a message or handle accordingly
+                        Toast.makeText(this, "You don't have permission to access this feature", Toast.LENGTH_SHORT).show()
+                    }
                 }
                 // Handle other menu items similarly
             }
             true
         }
+
 
         menuButton.setOnClickListener {
             if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -70,72 +97,26 @@ class CategoriesPage : AppCompatActivity() {
         }
 
         historicalButton.setOnClickListener {
-            openHistoricalSitesPage()
+            IntentAdapter.openHistoricalSitesPage(this)
         }
         lodgingButton.setOnClickListener {
-            openLodgingPage()
+            IntentAdapter.openLodgingPage(this)
         }
         gastronomyButton.setOnClickListener {
-            openGastronomyPage()
+            IntentAdapter.openGastronomyPage(this)
         }
         shoppingButton.setOnClickListener {
-            openShoppingSpotsPage()
+            IntentAdapter.openShoppingSpotsPage(this)
         }
         culturalButton.setOnClickListener {
-            openCulturalEventsPage()
+            IntentAdapter.openCulturalEventsPage(this)
         }
         outdoorButton.setOnClickListener {
-            openOutdoorActivitesPage()
+            IntentAdapter.openOutdoorActivitiesPage(this)
         }
         transportationButton.setOnClickListener {
-            openTransportationPage()
+            IntentAdapter.openTransportationPage(this)
         }
-
-    }
-    private fun openVenuesPage()
-    {
-        val intent = Intent(this, CategoriesPage::class.java)
-        startActivity(intent)
-    }
-    private fun openHomePage()
-    {
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
-    }
-    private fun openHistoricalSitesPage()
-    {
-        val intent = Intent(this, HistoricalSitesPage::class.java)
-        startActivity(intent)
-    }
-    private fun openLodgingPage()
-    {
-        val intent = Intent(this, LodgingPage::class.java)
-        startActivity(intent)
-    }
-    private fun openGastronomyPage()
-    {
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
-    }
-    private fun openShoppingSpotsPage()
-    {
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
-    }
-    private fun openCulturalEventsPage()
-    {
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
-    }
-    private fun openOutdoorActivitesPage()
-    {
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
-    }
-    private fun openTransportationPage()
-    {
-        val intent = Intent(this, HomePage::class.java)
-        startActivity(intent)
     }
 }
 //Accommodations

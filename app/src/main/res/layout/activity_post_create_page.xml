@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/imageslide1"
+        android:src="@drawable/placeholder_image"
         app:layout_constraintTop_toBottomOf="@id/categoryDropdown"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,20 +55,33 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"/>
 
-    <!-- Description Input -->
-    <EditText
-        android:id="@+id/descriptionEditText"
+    <!-- Description Input with ScrollView -->
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Description"
-        android:inputType="textMultiLine"
-        android:isScrollContainer="true"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/titleEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"/>
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineBottom">
+
+        <EditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:inputType="textMultiLine"/>
+    </ScrollView>
+
+    <!-- Guideline for ScrollView bottom -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
 
     <!-- Button to Create Post -->
     <Button
@@ -76,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create Post"
-        app:layout_constraintTop_toBottomOf="@id/descriptionEditText"
+        app:layout_constraintTop_toBottomOf="@id/guidelineBottom"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"/>
