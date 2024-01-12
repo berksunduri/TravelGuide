@@ -92,7 +92,7 @@ class SignUpPage : AppCompatActivity() {
             Toast.makeText(this, "Please input Password", Toast.LENGTH_SHORT).show()
             return false
         }
-        if(password.text.toString().length <= 8){
+        if(password.text.toString().length < 8){
             Toast.makeText(this, "Password should be at least 8 characters", Toast.LENGTH_SHORT).show()
             return false
         }

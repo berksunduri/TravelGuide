@@ -24,12 +24,6 @@ object IntentAdapter {
         (context as? Activity)?.finish()
     }
 
-    fun openVenuesPage(context: Context) {
-        val intent = Intent(context, CategoriesPage::class.java)
-        context.startActivity(intent)
-        (context as? Activity)?.finish()
-    }
-
     fun openHomePage(context: Context) {
         val intent = Intent(context, HomePage::class.java)
         context.startActivity(intent)

@@ -4,8 +4,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -19,9 +23,19 @@ class ProfilePage : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var firebaseDatabase: FirebaseDatabase
 
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navView: NavigationView
+    private lateinit var menuButton: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile_page)
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+        navView = findViewById<NavigationView>(R.id.nav_view)
+        val menu = navView.menu
+        val createPostItem =  menu.findItem(R.id.nav_createpost)
+        menuButton = findViewById(R.id.menu_button)
 
         nameEditText = findViewById(R.id.etName)
         surnameEditText = findViewById(R.id.etSurname)
@@ -36,6 +50,39 @@ class ProfilePage : AppCompatActivity() {
         }
 
         loadUserProfileData()
+
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, R.string.open, R.string.close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    // Handle Home Page click
+                    IntentAdapter.openHomePage(this)
+                }
+                R.id.nav_categories -> {
+                    // Handle Venues Page Click
+                    IntentAdapter.openCategoriesPage(this)
+                }
+                R.id.nav_profile -> {
+                    // Handle Venues Page Click
+                    IntentAdapter.openProfilePage(this)
+                }
+                R.id.nav_createpost -> {
+                    if (createPostItem.isVisible) {
+                        IntentAdapter.openCreatePostPage(this)
+                    } else {
+                        // If the current user is not the admin, show a message or handle accordingly
+                        Toast.makeText(this, "You don't have permission to access this feature", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                // Handle other menu items similarly
+            }
+            true
+        }
     }
 
     private fun loadUserProfileData() {

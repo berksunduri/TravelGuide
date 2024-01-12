@@ -6,9 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".GastronomyPage">
 
-    <RelativeLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:layout_marginLeft="16dp"
+            android:padding="16dp"
+            android:src="@drawable/car_ui_icon_arrow_back" />
+
         <TextView
             android:id="@+id/textViewGastronomy"
             android:layout_width="wrap_content"
@@ -17,14 +31,20 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:fontFamily="@font/jost"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_gravity="start"
+            android:layout_marginStart="8dp"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewGastronomy"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/textViewGastronomy"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:padding="15dp"/>

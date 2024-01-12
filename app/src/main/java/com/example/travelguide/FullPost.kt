@@ -21,12 +21,15 @@ class FullPost : AppCompatActivity() {
 
         // Retrieve data from Intent
         val title = intent.getStringExtra("title")
-        val description = intent.getStringExtra("description")
+        var description = intent.getStringExtra("description")
         val imageUrl = intent.getStringExtra("imageUrl")
+
+        description = description?.replace("_c", "\n")
 
         // Set data to views
         fullPostTitleTextView.text = title
         fullPostDescriptionTextView.text = description
+
 
         // Load image using Picasso
         Picasso.get()

@@ -18,13 +18,6 @@
         android:title="Categories"
         app:itemTextAppearance="@style/MenuTextStyle"/>
 
-    <!-- All Posts -->
-    <item
-        android:id="@+id/nav_all_posts"
-        android:icon="@drawable/post"
-        android:title="All Posts"
-        app:itemTextAppearance="@style/MenuTextStyle"/>
-
     <!-- Profile -->
     <item
         android:id="@+id/nav_profile"
@@ -37,7 +30,7 @@
         android:id="@+id/nav_help"
         android:icon="@drawable/help"
         android:title="Help"
-        app:itemTextAppearance="@style/MenuTextStyle"/>
+        app:itemTextAppearance="@style/MenuTextStyle" />
 
     <!-- Contact -->
     <item

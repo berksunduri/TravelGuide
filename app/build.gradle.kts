@@ -52,6 +52,7 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:3.1.0")
     implementation("com.google.android.gms:play-services-maps:17.0.0")
     implementation("com.google.firebase:firebase-storage-ktx:20.3.0")
+    implementation("com.android.car.ui:car-ui-lib:2.5.1")
     testImplementation("junit:junit:4.13.2")
     implementation("com.squareup.picasso:picasso:2.8")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

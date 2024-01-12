@@ -3,44 +3,34 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Filter
-import android.widget.Filterable
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelguide.FullPost
 import com.example.travelguide.R
 import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.squareup.picasso.Picasso
 
-class PostsAdapter(private val category: String) :
-    RecyclerView.Adapter<PostsAdapter.PostViewHolder>(), Filterable {
+class AllPostsAdapter : RecyclerView.Adapter<AllPostsAdapter.PostViewHolder>() {
 
     private var postsList: List<DataSnapshot> = ArrayList()
-    private var filteredPostsList: List<DataSnapshot> = ArrayList()
-    private val filter: Filter = PostFilter()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_post, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_post, parent, false)
         return PostViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) {
-        val postSnapshot = filteredPostsList[position]
+        val postSnapshot = postsList[position]
         holder.bind(postSnapshot)
     }
 
     override fun getItemCount(): Int {
-        return filteredPostsList.size
+        return postsList.size
     }
 
     fun setPosts(posts: List<DataSnapshot>) {
         this.postsList = posts
-        this.filteredPostsList = posts
         notifyDataSetChanged()
     }
 
@@ -62,6 +52,8 @@ class PostsAdapter(private val category: String) :
                     .placeholder(R.drawable.placeholder_image)
                     .into(imageViewPost)
             } else {
+                // Handle the case when imageUrl is empty or null
+                // You can set a default image or hide the ImageView
                 imageViewPost.setImageResource(R.drawable.placeholder_image)
             }
 
@@ -74,35 +66,6 @@ class PostsAdapter(private val category: String) :
                 intent.putExtra("imageUrl", imageUrl)
                 itemView.context.startActivity(intent)
             }
-        }
-    }
-
-    override fun getFilter(): Filter {
-        return filter
-    }
-
-    inner class PostFilter : Filter() {
-        override fun performFiltering(constraint: CharSequence?): FilterResults {
-            val query = constraint?.toString()?.toLowerCase()
-            val results = FilterResults()
-
-            if (query.isNullOrBlank()) {
-                results.values = postsList
-            } else {
-                val filteredList = postsList.filter { postSnapshot ->
-                    val title =
-                        postSnapshot.child("title").getValue(String::class.java) ?: ""
-                    title.toLowerCase().contains(query)
-                }
-                results.values = filteredList
-            }
-
-            return results
-        }
-
-        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-            filteredPostsList = results?.values as List<DataSnapshot>
-            notifyDataSetChanged()
         }
     }
 }

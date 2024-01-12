@@ -1,0 +1,44 @@
+<!-- dialog_agreement.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agreement"
+        android:textSize="28sp"
+        android:fontFamily="@font/jost"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
+    <!-- Content of the agreement -->
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This agreement is a legal contract between you and the creator of the Balkan Wonder mobile application.\n By downloading, installing, or using the Balkan Wonder App, you agree to the following terms:\nBy using the Balkan Wonder App, you acknowledge that you have read, understood, and agree to comply with the terms and conditions outlined in this Agreement.\nBalkan Wonder grants you a limited, non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial use.\n You may not modify, adapt, reverse engineer, or violate applicable laws while using the Balkan Wonder App.\nUsers may contribute content, granting Balkan Wonder the right to use and display such content for App improvement and promotion.\n All App content and materials are the property of Balkan Wonder and are protected by intellectual property laws.\nBalkan Wonder may collect and use user data in accordance with its Privacy Policy.\n Your use of the App implies consent to data collection.Balkan Wonder is not liable for any damages arising from the use of the App.\nBalkan Wonder reserves the right to terminate or suspend your access to the App at any time, without notice, for any reason.\nBalkan Wonder may update this Agreement. Continued use of the App after modifications constitutes acceptance of the updated terms.\nFor questions or concerns regarding this Agreement, contact us at:\n info@balkanwonder.com\n page.By using the Balkan Wonder App, you agree to abide by the terms and conditions outlined in this Agreement."/>
+
+    </ScrollView>
+
+    <CheckBox
+        android:id="@+id/checkBoxAgree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I agree to the terms and conditions"/>
+
+    <Button
+        android:id="@+id/buttonAccept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Accept"
+        android:enabled="false"
+        android:layout_marginTop="16dp"/>
+</LinearLayout>
