@@ -3,6 +3,8 @@ package com.example.travelguide
 import PostsAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -17,14 +19,23 @@ class ShoppingSpotsPage : AppCompatActivity() {
     private lateinit var postsAdapter: PostsAdapter
     private lateinit var databaseReference: DatabaseReference
     private var shoppingSpots = "Shopping Spots"
+    private lateinit var backButton : ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shopping_spots_page)
+
+
 
         recyclerView = findViewById(R.id.recyclerViewShoppingSpots)
         recyclerView.layoutManager = LinearLayoutManager(this)
         postsAdapter = PostsAdapter(shoppingSpots)
         recyclerView.adapter = postsAdapter
+
+        backButton = findViewById(R.id.backButton)
+
+        backButton.setOnClickListener {
+            IntentAdapter.openCategoriesPage(this)
+        }
 
         databaseReference = FirebaseDatabase.getInstance().reference.child("Posts").child(shoppingSpots)
         databaseReference.addValueEventListener(object : ValueEventListener {

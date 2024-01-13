@@ -31,6 +31,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import de.hdodenhof.circleimageview.CircleImageView
 
 class HomePage : AppCompatActivity(), OnMapReadyCallback {
 
@@ -42,6 +43,7 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var preferences: SharedPreferences
     private lateinit var dialog: Dialog
     private lateinit var searchView: SearchView
+    private lateinit var profilePic: CircleImageView
 
     private lateinit var postsAdapter: PostsAdapter
 
@@ -58,6 +60,7 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
         val createPostItem =  menu.findItem(R.id.nav_createpost)
         menuButton = findViewById(R.id.menu_button)
         searchView = findViewById(R.id.searchView)
+        profilePic = findViewById(R.id.profilePic)
 
         preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE)
         val userAgreed = preferences.getBoolean("userAgreed", false)
@@ -67,9 +70,9 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
 
 
         val currentUserUUID = getCurrentUserUUID()
-// Update the agreement status in the database
-        if (currentUserUUID != null) {
 
+        profilePic.setOnClickListener{
+            IntentAdapter.openProfilePage(this)
         }
 
 
@@ -121,24 +124,27 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
         navView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.nav_home -> {
-                    // Handle Home Page click
                     IntentAdapter.openHomePage(this)
                 }
                 R.id.nav_categories -> {
-                    // Handle Venues Page Click
                     IntentAdapter.openCategoriesPage(this)
                 }
                 R.id.nav_profile -> {
-                    // Handle Venues Page Click
                     IntentAdapter.openProfilePage(this)
                 }
                 R.id.nav_createpost -> {
                     if (createPostItem.isVisible) {
                         IntentAdapter.openCreatePostPage(this)
                     } else {
-                        // If the current user is not the admin, show a message or handle accordingly
                         Toast.makeText(this, "You don't have permission to access this feature", Toast.LENGTH_SHORT).show()
                     }
+                }
+                R.id.nav_contact -> {
+                    IntentAdapter.openContactPage(this)
+
+                }
+                R.id.nav_help -> {
+                    IntentAdapter.openFAQPage(this)
                 }
                 // Handle other menu items similarly
             }

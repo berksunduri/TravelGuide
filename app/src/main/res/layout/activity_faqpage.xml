@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawer_layout"
+    tools:context=".FAQPage">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/menu_button"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#FFFFFF"
+            android:scaleType="centerInside"
+            android:src="@drawable/menuicon" />
+
+        <!-- Add TextViews for Name Surname, Email, and Phone Number -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FAQ"
+            android:layout_below="@id/menu_button"
+            android:layout_marginTop="16dp"
+            android:id="@+id/faqText"
+            android:textSize="32sp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/jost"
+            android:textColor="@color/black"
+            />
+
+
+
+        <TextView
+            android:id="@+id/question1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. Q: How do I create an account on the Balkan Wonder app?"
+            android:layout_below="@id/faqText"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+
+        <TextView
+            android:id="@+id/answer1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   A: To create an account, simply click on the Sign Up option on the login screen. Fill in the required information, including your email and password, and follow the on-screen instructions."
+        android:layout_below="@id/question1"
+        android:layout_marginTop="8dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+        />
+        <TextView
+            android:id="@+id/question2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. Q: Can I use Balkan Wonder without creating an account?"
+            android:layout_below="@id/answer1"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+
+        <TextView
+            android:id="@+id/answer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   A: While account creation enhances your experience with personalized features, you can still explore some content without an account. However, certain features like favoriting and creating posts require an account."
+            android:layout_below="@id/question2"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+        <TextView
+            android:id="@+id/question3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. Q: How do I reset my password if I forget it?"
+            android:layout_below="@id/answer2"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+
+        <TextView
+            android:id="@+id/answer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   A: On the login screen, click on the Forgot Password link. Enter your registered email, and you'll receive instructions on resetting your password."
+            android:layout_below="@id/question3"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+        <TextView
+            android:id="@+id/question4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4. Q: Is the app available for download on both Android phones and tablets?"
+            android:layout_below="@id/answer3"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+
+        <TextView
+            android:id="@+id/answer4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   A:Yes, the Balkan Wonder app is available for download on both Android phones and tablets. Simply search for Balkan Wonder on the Google Play Store. "
+            android:layout_below="@id/question4"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+        <TextView
+            android:id="@+id/question5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5. Q: How often is the content updated within the app?"
+            android:layout_below="@id/answer4"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+
+        <TextView
+            android:id="@+id/answer5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   A: The content is regularly updated to provide users with the latest information. Updates may include new attractions, events, and user-generated posts."
+            android:layout_below="@id/question5"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+        <TextView
+            android:id="@+id/question6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6. Q: Can I customize my profile and preferences within the app?"
+            android:layout_below="@id/answer5"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+
+        <TextView
+            android:id="@+id/answer6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A: Absolutely! You can personalize your profile by adding details such as your interests, favorite locations, and a profile picture. This customization helps tailor your Balkan Wonder experience."
+            android:layout_below="@id/question6"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+        <TextView
+            android:id="@+id/question7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7. Q: Are there any fees associated with using Balkan Wonder?"
+            android:layout_below="@id/answer6"
+            android:layout_marginTop="16dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+
+        <TextView
+            android:id="@+id/answer7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   A: The core features of Balkan Wonder are free to use. The app may generate revenue through targeted advertisements and, in the future, potentially through a subscription model for an ad-free experience."
+            android:layout_below="@id/question7"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            />
+
+
+    </RelativeLayout>
+    </ScrollView>
+
+    <!-- NavigationView for the drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

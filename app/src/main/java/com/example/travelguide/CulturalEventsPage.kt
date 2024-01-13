@@ -3,6 +3,8 @@ package com.example.travelguide
 import PostsAdapter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
@@ -18,6 +20,7 @@ class CulturalEventsPage : AppCompatActivity() {
     private lateinit var postsAdapter: PostsAdapter
     private lateinit var databaseReference: DatabaseReference
     private var culturalEvents = "Cultural Events"
+    private lateinit var backButton: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cultural_events_page)
@@ -26,6 +29,12 @@ class CulturalEventsPage : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         postsAdapter = PostsAdapter(culturalEvents)
         recyclerView.adapter = postsAdapter
+
+        backButton = findViewById(R.id.backButton)
+
+        backButton.setOnClickListener {
+            IntentAdapter.openCategoriesPage(this)
+        }
 
         databaseReference = FirebaseDatabase.getInstance().reference.child("Posts").child(culturalEvents)
         databaseReference.addValueEventListener(object : ValueEventListener {

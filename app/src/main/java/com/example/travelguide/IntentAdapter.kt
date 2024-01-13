@@ -88,4 +88,15 @@ object IntentAdapter {
         context.startActivity(intent)
         (context as? Activity)?.finish()
     }
+
+    fun openFAQPage(context: Context) {
+        val intent= Intent(context, FAQPage::class.java)
+        context.startActivity(intent)
+        (context as? Activity)?.finish()
+    }
+    fun openContactPage(context: Context) {
+        val intent= Intent(context, ContactPage::class.java)
+        context.startActivity(intent)
+        (context as? Activity)?.finish()
+    }
 }

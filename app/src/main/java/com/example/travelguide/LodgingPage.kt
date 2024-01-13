@@ -2,6 +2,8 @@ package com.example.travelguide
 
 import PostsAdapter
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +20,7 @@ class LodgingPage : AppCompatActivity() {
     private lateinit var postsAdapter: PostsAdapter
     private lateinit var databaseReference: DatabaseReference
     private var lodging = "Lodging"
+    private lateinit var backButton: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lodging_page)
@@ -27,6 +30,12 @@ class LodgingPage : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         postsAdapter = PostsAdapter(lodging)
         recyclerView.adapter = postsAdapter
+
+        backButton = findViewById(R.id.backButton)
+
+        backButton.setOnClickListener {
+            IntentAdapter.openCategoriesPage(this)
+        }
 
         databaseReference = FirebaseDatabase.getInstance().reference.child("Posts").child(lodging)
         databaseReference.addValueEventListener(object : ValueEventListener {

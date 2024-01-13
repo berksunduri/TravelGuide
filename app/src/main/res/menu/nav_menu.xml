@@ -29,7 +29,7 @@
     <item
         android:id="@+id/nav_help"
         android:icon="@drawable/help"
-        android:title="Help"
+        android:title="FAQ"
         app:itemTextAppearance="@style/MenuTextStyle" />
 
     <!-- Contact -->
