@@ -33,7 +33,8 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import de.hdodenhof.circleimageview.CircleImageView
 
-class HomePage : AppCompatActivity(), OnMapReadyCallback {
+
+class HomePage : AppCompatActivity(), OnMapReadyCallback, OnLogoItemClickListener {
 
     private lateinit var mMap: GoogleMap
     private lateinit var drawerLayout: DrawerLayout
@@ -46,6 +47,17 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var profilePic: CircleImageView
 
     private lateinit var postsAdapter: PostsAdapter
+
+
+    private val logoItems = listOf(
+        LogoItem(R.drawable.historicalsites, "Historical Sites"),
+        LogoItem(R.drawable.accomodations, "Lodging"),
+        LogoItem(R.drawable.gastronomy, "Gastronomy"),
+        LogoItem(R.drawable.shoppingspots, "Shopping Spots"),
+        LogoItem(R.drawable.events, "Cultural Events"),
+        LogoItem(R.drawable.outdoor, "Outdoor Activites"),
+        LogoItem(R.drawable.transportation, "Transportation")
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -164,17 +176,10 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
         recyclerView.layoutManager = layoutManager
 
 // Replace YOUR_LOGO_RES_IDS with the actual list of logo resource IDs
-        val logoItems = listOf(
-            LogoItem(R.drawable.historicalsites, "Historical Sites"),
-            LogoItem(R.drawable.accomodations, "Lodging"),
-            LogoItem(R.drawable.gastronomy, "Gastronomy"),
-            LogoItem(R.drawable.shoppingspots, "Shopping Spots"),
-            LogoItem(R.drawable.events, "Cultural Events"),
-            LogoItem(R.drawable.outdoor, "Outdoor Activites"),
-            LogoItem(R.drawable.transportation, "Transportation")
-        )
 
-        val adapter = CategoryLogoAdapter(logoItems)
+
+        val adapter = CategoryLogoAdapter(logoItems, this)
+        recyclerView.adapter = adapter
 
         recyclerView.adapter = adapter
 
@@ -266,6 +271,21 @@ class HomePage : AppCompatActivity(), OnMapReadyCallback {
     private fun getCurrentUserUUID(): String? {
         val currentUser = FirebaseAuth.getInstance().currentUser
         return currentUser?.uid
+    }
+
+    override fun onLogoItemClick(position: Int) {
+        when (position) {
+            0 -> IntentAdapter.openHistoricalSitesPage(this)
+            1 -> IntentAdapter.openLodgingPage(this)
+            2 -> IntentAdapter.openGastronomyPage(this)
+            3 -> IntentAdapter.openShoppingSpotsPage(this)
+            4 -> IntentAdapter.openCulturalEventsPage(this)
+            5 -> IntentAdapter.openOutdoorActivitiesPage(this)
+            6 -> IntentAdapter.openTransportationPage(this)
+            else -> {
+                // Handle other positions if needed
+            }
+        }
     }
 
 

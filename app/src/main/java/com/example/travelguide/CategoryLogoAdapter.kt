@@ -5,9 +5,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.travelguide.LogoItem
+import com.example.travelguide.OnLogoItemClickListener
 import com.example.travelguide.R
 
-class CategoryLogoAdapter(private val logoItems: List<LogoItem>) :
+class CategoryLogoAdapter(private val logoItems: List<LogoItem>, private val clickListener: OnLogoItemClickListener) :
     RecyclerView.Adapter<CategoryLogoAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -17,7 +18,7 @@ class CategoryLogoAdapter(private val logoItems: List<LogoItem>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val logoItem = logoItems[position]
-        holder.bind(logoItem)
+        holder.bind(logoItem, clickListener, position)
     }
 
     override fun getItemCount(): Int = logoItems.size
@@ -26,10 +27,15 @@ class CategoryLogoAdapter(private val logoItems: List<LogoItem>) :
         private val logoImageView: ImageView = itemView.findViewById(R.id.logo)
         private val logoTextView: TextView = itemView.findViewById(R.id.logoText)
 
-        fun bind(logoItem: LogoItem) {
+        fun bind(logoItem: LogoItem, clickListener: OnLogoItemClickListener, position: Int) {
             logoImageView.setImageResource(logoItem.logoResId)
             logoTextView.text = logoItem.text
+
+            itemView.setOnClickListener {
+                clickListener.onLogoItemClick(position)
+            }
         }
     }
 }
+
 
